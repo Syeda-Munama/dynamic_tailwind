@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { EB_Garamond } from "next/font/google"; // Import EB Garamond from Google Fonts
+import Navbar from "./components/Navbar";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  variable: "--font-eb-garamond",
+  weight: ["400", "700"], // Add weights you plan to use
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,8 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ fontFamily: ebGaramond.style.fontFamily, backgroundColor: "white" , color: "black" }}
       >
+        <Navbar/>
         {children}
       </body>
     </html>
